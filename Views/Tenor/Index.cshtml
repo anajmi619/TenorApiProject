@@ -1,0 +1,22 @@
+﻿@model List<TenorApiProject.Models.TenorGifModel>
+
+<h2>Search Tenor GIFs</h2>
+
+<form asp-action="Search" method="post">
+    <input type="text" name="query" placeholder="Search for GIFs..." />
+    <button type="submit">Search</button>
+</form>
+
+@if (Model != null && Model.Any())
+{
+    <div>
+        @foreach (var gif in Model)
+        {
+            <div>
+                <h3>@gif.Title</h3>
+                <img src="@gif.PreviewUrl" alt="@gif.Title" />
+                <p><a href="@gif.Url" target="_blank">Full GIF</a></p>
+            </div>
+        }
+    </div>
+}
