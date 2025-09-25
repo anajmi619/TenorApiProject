@@ -1,8 +1,39 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+﻿<h2>Trending GIFs</h2>
+<div class="gif-grid">
+    @foreach (var gif in ViewBag.Trending["results"])
+    {
+        <img src="@gif["media_formats"]["tinygif"]["url"]" alt="GIF" width="200" />
+    }
 </div>
+
+<h2>Mostly Searched (Funny)</h2>
+<div class="gif-grid">
+    @foreach (var gif in ViewBag.Funny["results"])
+    {
+        <img src="@gif["media_formats"]["tinygif"]["url"]" alt="GIF" width="200" />
+    }
+</div>
+
+<h2>Categories</h2>
+<ul>
+    @foreach (var cat in ViewBag.Categories["tags"])
+    {
+        <li>@cat["searchterm"]</li>
+    }
+</ul>
+
+<style>
+    .gif-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .gif-grid img {
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+    .gif-grid img:hover {
+        transform: scale(1.1);
+    }
+</style>
