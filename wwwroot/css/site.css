@@ -20,3 +20,7 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.my-darkblue {
+    background-color: #315682; /* any hex or rgb you like */
+}

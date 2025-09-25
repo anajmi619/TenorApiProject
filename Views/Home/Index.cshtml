@@ -1,39 +1,34 @@
-﻿<h2>Trending GIFs</h2>
-<div class="gif-grid">
-    @foreach (var gif in ViewBag.Trending["results"])
-    {
-        <img src="@gif["media_formats"]["tinygif"]["url"]" alt="GIF" width="200" />
-    }
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="container-fluid bg-dark text-white py-5">
+    <!-- Introduction -->
+    <div class="text-center mb-5">
+        <h3 class="fw-bold">Introduction</h3>
+        <p class="lead mx-auto" style="max-width: 800px;">
+            This web application is an interactive platform that allows users to search, view, and save animated GIFs in real time.
+            It integrates directly with the Tenor GIF API, which is one of the largest databases of trending GIFs worldwide.
+            By connecting to Tenor’s API, the app brings a huge collection of GIFs right into a single, user-friendly interface.
+        </p>
+    </div>
+
+    <!-- Purpose -->
+    <div class="mx-auto" style="max-width: 800px;">
+        <h4 class="fw-bold mb-3">Purpose</h4>
+        <ul>
+            <li><b>Seamless GIF Search</b> – Users can instantly find the perfect GIF for any mood, keyword, or trending topic without leaving the app.</li>
+            <li><b>Real-Time Content</b> – Because it pulls data from Tenor’s live database, the app always displays the latest and trending GIFs.</li>
+            <li><b>Easy to save</b> – Users can copy GIF links or embed them into chats, emails, or social media platforms.</li>
+            <li><b>Engagement</b> – Helps websites, blogs, and online communities enhance conversations and engagement with visual content.</li>
+        </ul>
+    </div>
+
+    <!-- FIND GIF Button -->
+    <div class="text-center mt-5">
+        <a asp-controller="Tenor" asp-action="Index"
+           class="btn btn-primary btn-lg px-5 py-3 rounded-4 fw-bold">
+            FIND GIF
+        </a>
+    </div>
 </div>
-
-<h2>Mostly Searched (Funny)</h2>
-<div class="gif-grid">
-    @foreach (var gif in ViewBag.Funny["results"])
-    {
-        <img src="@gif["media_formats"]["tinygif"]["url"]" alt="GIF" width="200" />
-    }
-</div>
-
-<h2>Categories</h2>
-<ul>
-    @foreach (var cat in ViewBag.Categories["tags"])
-    {
-        <li>@cat["searchterm"]</li>
-    }
-</ul>
-
-<style>
-    .gif-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-    .gif-grid img {
-        border-radius: 10px;
-        cursor: pointer;
-        transition: transform 0.2s;
-    }
-    .gif-grid img:hover {
-        transform: scale(1.1);
-    }
-</style>
