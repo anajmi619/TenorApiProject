@@ -24,3 +24,12 @@ body {
 .my-darkblue {
     background-color: #315682; /* any hex or rgb you like */
 }
+
+.hover-float {
+    transition: all 0.3s ease;
+}
+
+.hover-float:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
