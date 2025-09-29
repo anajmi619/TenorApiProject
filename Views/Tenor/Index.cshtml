@@ -7,16 +7,28 @@
     <button type="submit">Search</button>
 </form>
 
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger mt-3">
+        @Html.Raw(ViewBag.Error)
+    </div>
+}
+
+
 @if (Model != null && Model.Any())
 {
     <div>
         @foreach (var gif in Model)
         {
-            <div>
+            <div style="margin:10px 0;">
                 <h3>@gif.Title</h3>
                 <img src="@gif.PreviewUrl" alt="@gif.Title" />
                 <p><a href="@gif.Url" target="_blank">Full GIF</a></p>
             </div>
         }
     </div>
+}
+else if (ViewBag.Error == null)  // no error, but also no results yet
+{
+    <p style="margin-top:15px;">Enter a keyword above to search for GIFs.</p>
 }
