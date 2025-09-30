@@ -1,11 +1,14 @@
 ﻿@model List<TenorApiProject.Models.TenorGifModel>
 
-<h2>Search Tenor GIFs</h2>
+<div style="text-align:center; margin-top:50px;">
+    <h2>Search Tenor GIFs</h2>
 
-<form asp-action="Search" method="post">
-    <input type="text" name="query" placeholder="Search for GIFs..." />
-    <button type="submit">Search</button>
-</form>
+    <form asp-action="Search" method="post" style="display:inline-block; margin-top:15px;">
+        <input type="text" name="query" placeholder="Search for GIFs..." />
+        <button type="submit">Search</button>
+    </form>
+</div>
+
 
 @if (ViewBag.Error != null)
 {
@@ -20,9 +23,9 @@
     <div>
         @foreach (var gif in Model)
         {
-            <div style="margin:10px 0;">
+            <div style="text-align:center; margin:20px 0; padding-bottom:15px; border-bottom:1px solid #ccc;">
+                <img src="@gif.PreviewUrl" alt="@gif.Title" style="max-width:300px; display:block; margin:0 auto 10px auto;" />
                 <h3>@gif.Title</h3>
-                <img src="@gif.PreviewUrl" alt="@gif.Title" />
                 <p><a href="@gif.Url" target="_blank">Full GIF</a></p>
             </div>
         }
@@ -30,5 +33,7 @@
 }
 else if (ViewBag.Error == null)  // no error, but also no results yet
 {
-    <p style="margin-top:15px;">Enter a keyword above to search for GIFs.</p>
+    <p style="margin-top:15px; text-align:center;">
+        Enter a keyword above to search for GIFs.
+    </p>
 }
